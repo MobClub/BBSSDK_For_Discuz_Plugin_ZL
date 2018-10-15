@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title><?php echo $setting['app_name'].'-'.$setting['slogan']?></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            html,body{
+                height: 100%;
+            }
+            body{
+                font-family:"Microsoft YaHei",Arial,Helvetica,sans-serif,"SimSun";
+                /*background: #1dbffc url(./source/plugin/bbssdk/template/./source/plugin/bbssdk/template/assets/1-bg.png);*/
+                background: rgb(249,251,253) url(./source/plugin/bbssdk/template/assets/3-bg.jpg) no-repeat;
+                filter:"progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";  
+                -moz-background-size:100% 100%;  
+                    background-size:100% 100%;  
+                /*background-attachment: fixed;*/
+            }
+            .con{
+                width: 600px;
+                height: 100%;
+                margin: 0 auto;
+                position: relative;
+            }
+            .con .mobile{
+                position: absolute;
+                height: 470px;
+                bottom: 0;
+                width: 365px;
+                background: url(./source/plugin/bbssdk/template/assets/2-mobile.png);
+                left: 110px;
+                overflow: hidden;
+            }
+            .con .mobile img{
+                position: absolute;
+                width: 240px;
+                height: 418px;
+                top:100px;
+                left: 62px;
+            }
+            .con .top{
+                position: absolute;
+                height: 350px;
+                bottom: 530px;
+                width: 100%;
+            }
+            .con .top .logo{
+                height: 80px;
+            }
+            .con .top .logo img{
+                height: 80px;
+                width: 80px;
+                display: block;
+                margin: 0 auto;
+            }
+            .con .top .name{
+                text-align: center;
+                font-size: 55px;
+                color: #fff;
+            }
+            .con .top .sogan{
+                text-align: center;
+                font-size: 22px;
+                color: #fff;
+            }
+            .con .top .d{
+                overflow: hidden;
+                padding-top: 30px;
+                width: 530px;
+                margin: 0 auto;
+                cursor:pointer; 
+            }
+            .con .top .d span{
+                display: inline-block;
+                margin-top: 38px;
+                margin-left: 82px;
+            }
+            .con .top .d .iOS{
+                color: #79acd5;
+                float: left;
+                width: 265px;
+                height: 65px;
+                background: url(./source/plugin/bbssdk/template/assets/3-ios.png);
+            }
+            .con .top .d .android{
+                color: #84d5c3;
+                float: left;
+                width: 265px;
+                height: 65px;
+                background: url(./source/plugin/bbssdk/template/assets/3-android.png);
+            }
+            .qrcode{
+                position: fixed;
+                right: 100px;
+                bottom: 80px;
+                width: 120px;
+                height: 150px;
+                background-color: #fff;
+                border-radius: 10px;
+            }
+            .qrcode img{
+                display: block;
+                margin: 0 auto;
+                margin-top: 20px;
+                margin-bottom: 5px;
+                width: 100px;
+                height: 100px;
+            }
+            .qrcode div{
+                font-size: 12px;
+                text-align: center;
+            }
+        </style>
+        <script>
+            function ios(){
+                window.location.href = "<?php echo $setting['ios_addr']?>";
+            }
+            function android(){
+                window.location.href = "<?php echo $setting['android_addr']?>";
+            }
+        </script>
+    </head>
+    <body>
+        <div class="con">
+            <div class="mobile">
+                <img src="<?php echo $setting['preview']?>"/>
+            </div>
+            <div class="top">
+                <div class="logo">
+                    <img src="<?php echo $setting['logo']?>"/>
+                </div>
+                <div class="name"><?php echo $setting['app_name']?></div>
+                <div class="sogan"><?php echo $setting['slogan']?></div>
+                <div class="d">
+                    <div class="iOS" onclick="ios()"><span style="font-size:12px;">大小：<?php echo $setting['ios_size']?> 版本：<?php echo $setting['ios_version']?></span></div>
+                    <div class="android" onclick="android()"><span style="font-size:12px;"><?php echo $setting['android_size']?> 版本：<?php echo $setting['android_version']?></span></div>
+                </div>
+            </div>
+        </div>
+        <div class="qrcode">
+            <img src="<?php echo $setting['qrcode']?>"/>
+            <div>扫一扫直接下载</div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="gbk">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>详情页</title>
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="format-detection" content="telephone=no">
+		<link rel="stylesheet" type="text/css" href="./source/plugin/bbssdk/h5/portal/theme1/assets/css/style.css">
+		<link rel="stylesheet" type="text/css" href="./source/plugin/bbssdk/h5/portal/theme1/assets/css/md.css">
+                <script type="text/javascript" src="//f.moblink.mob.com/v2_0_1/moblink.js?appkey=<?php echo $appkey?>"></script>
+                <script type="text/javascript">
+                    function goPostLocation(){
+                        document.getElementById('postTitle').scrollIntoView();
+                    }
+                </script>
+	</head>
+	<body>
+    	<div id="details">
+    		<!--文章 start-->
+    		<div class="article">
+    			<div class="article-title"><?php echo $article['title']?></div>
+                        <!--作者 start-->
+                        <div class="author">
+                                <div class="author-left">
+                                        <div class="author-info">
+                                            <div>文：<?php echo $article['author']?></div>
+                                            <div><?php echo formatDate($article['dateline'])?></div>
+                                        </div>
+                                </div>
+                            <div class="view">查看<span><?php echo $article['viewnum']>999?'999+':$article['viewnum']?></span></div>
+                        </div>
+                        <!--作者 end-->
+    			<div class="article-text markdown-body" id="detail_a"><?php echo $article['content']?></div>
+<!--    			<ul class="flie-list" v-if="article.attachments!=null">
+    				<li v-for="atta in article.attachments">
+    					<div class="file-img"><img src="./source/plugin/bbssdk/h5/portal/theme1/assets/images/fileicon-default.png"/></div>
+    					<div class="file-name">{{ atta.fileName }}</div>
+    					<a href="javascript:;" @click="openAttachment(atta)">{{ atta.isImage==1 ? "打开附件" : "下载附件" }}</a>
+    				</li>
+    			</ul>-->
+    		</div>
+    		<!--文章 end-->
+                <?php if(0&&$article['related']):?>
+                <div class="relate">
+                    <div class="postTitle"><img src="./source/plugin/bbssdk/h5/portal/theme1/assets/images/relate.png"/>咨询相关</div>
+                    <?php foreach($article['related'] as $k=>$related):?>
+                    <?php if($k>2)break;?>
+                    <div>
+                        <?php if($related['pic']):?>
+                        <div class="mob-wrap" @click="openRelatedArticle(related.aid)">
+                            <img src="<?php echo $related['pic']?>">
+                        </div>
+                        <?php endif;?>
+                        <div class="con" @click="openRelatedArticle(related.aid)">
+                            <h3><?php echo $related['title']?></h3>
+                            <div class="summary"><?php echo $related['summary']?></div>
+                        </div>
+                    </div>
+                    <?php endforeach;?>
+                </div>
+                <?php endif;?>
+    		<!--评论 start-->
+			<div id="postTitle"></div>
+                <div class="postTitle"><img src="./source/plugin/bbssdk/h5/portal/theme1/assets/images/postTitle.png"/>评论</div>
+                <?php if($article['commentnum']):?>
+    		<ul class="comment" id="comm">
+                    <?php foreach($commentslist as $comment):?>
+    			<li v-for="(list,index) in commentList">
+                            <div class="t">
+                                <?php if($comment['username']):?>
+                                <div class="m-l-0"><img src="<?php echo $comment['avatar']?>"/></div>
+                                <?php endif;?>
+                                <div class="name"><?php echo $comment['username']?$comment['username']:'匿名'?></div>
+                                <div><?php echo formatDate($comment['dateline'])?></div>
+                            </div>
+                            <div class="c"><?php echo $comment['message']?></div>
+                            <?php if($comment['prePost']):?>
+                            <div class="comment-reply-box">
+                                <dl class="comment-reply">
+                                        <dd>引用：<?php echo $comment['prePost']['author']?>于<?php echo $comment['prePost']['createdOn']?>发表的：<span><?php echo $comment['prePost']['message']?></span></dd>
+                                </dl>
+                            </div>
+                            <?php endif;?>
+    			</li>
+                    <?php endforeach;?>
+    		</ul>
+                <?php else:?>
+                <div class="bottom-loading"><span ><div class="nomore">暂无评论~</div></span></div>
+                <?php endif;?>
+    		<!--评论 end-->
+    		
+    	</div>
+		<script type="text/javascript">
+            var video = document.getElementsByTagName("iframe");
+            var w = document.getElementById("detail_a").offsetWidth;
+            for(v in video ){
+				video[v].width = w
+                video[v].height = w*0.75
+            }
+			MobLink({
+				el: '',
+				path: '/portal/detail',
+				params: {
+					'aid': '<?php echo $article["aid"]?>',
+				}
+			});
+        </script>
+	</body>
+</html>

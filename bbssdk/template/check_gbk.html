@@ -1,0 +1,144 @@
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=gbk">
+<title>BBSSDK 安装(更新)向导</title>
+<style>
+/* common */
+*{ word-wrap:break-word; }
+/*body{ padding:5px 0; background:#FFF; text-align:center; }
+body, td, input, textarea, select, button{ color:#666; font:12px/1.5 Verdana, Tahoma, Arial, 'Microsoft Yahei', 'Simsun', sans-serif; }*/
+ul, dl, dd, p, h1, h2, h3, h4, h5, h6, form, fieldset { margin:0; padding:0; }
+h1, h2, h3, h4, h5, h6{ font-size:12px; }
+a{ color:#2366A8; text-decoration:none; }
+	a:hover { text-decoration:underline; }
+	a img{ border:none; }
+em, cite, strong, th{ font-style:normal; font-weight:normal; }
+table{ border-collapse:collapse; }
+	th{ text-align:left; }
+        .tb{
+            width: auto;
+        }
+/* box */
+.container{ overflow:hidden; margin:0 auto; width:1000px; height:auto !important;text-align:left; border:1px solid #B5CFD9; }
+/*.header{ *overflow:hidden; height:194px; background:url(bg_repx.gif) repeat-x; }*/
+	.header h1{ text-indent:-9999px; width:270px; height:48px; }
+	.header span { float: right; padding-right: 10px; }
+/*.main{ padding:20px 20px 0; background:#F7FBFE url(bg_repx.gif) repeat-x 0 -194px; }*/
+	.main h3{ margin:10px auto; width:75%; color:#6CA1B4; font-weight:700; }
+.desc{ margin:0 auto; width:537px; line-height:180%; clear:both; }
+	.desc ul{ margin-left:20px; }
+.desc1{ margin:10px 0; width:100%; }
+	.desc1 ul{ margin-left:25px; }
+	.desc1 li{ margin:3px 0; }
+.tb, .tb2{ margin:15px 0 15px 67px; }
+	.tb th{ padding:5px; color:#6CA1B4; font-weight:700; font-size: xx-small;}
+	.tb td{ padding:3px 5px; }
+		.tb .w, .tb .nw, .tb .padleft{ padding-left:45px; }
+		.tb .pdleft16{ padding-left:67px; }
+.tb2{}
+	.tb2 th, .tb2 td{ padding:3px 5px; }
+	.tbopt{ width:130px; }
+.btnbox{ text-align:center; }
+	.btnbox input{ margin:0 2px; }
+	.btnbox textarea{ margin-bottom:10px; height:150px; }
+.btn{ margin-top:10px; }
+/*.footer{ line-height:40px; text-align:center; background:url(bg_footer.gif) repeat-x; font-size:11px; }*/
+
+/* form */
+.txt{ width:200px; }
+
+/* step num */
+.setup{ margin:46px 0 0 200px; padding-left:70px; }
+	.setup h2{ padding-top:0; *padding-top:6px; line-height:1.2; color:#6CA1B4; font-size:36px; }
+	.setup p{ margin:0 0 10px 6px; color:#999; }
+
+/* file status */
+.w{ background:url(./source/plugin/bbssdk/template/assets/bg_repno.gif) no-repeat 90px -148px;  }
+.nw{ background:url(./source/plugin/bbssdk/template/assets/bg_repno.gif) no-repeat 90px -197px; }
+
+/* space */
+.marginbot{ margin-bottom:20px; }
+.margintop{ margin-top:20px; }
+.red{ color:red; }
+
+.licenseblock{ margin-bottom:15px; padding:8px; height:280px; border:1px solid #EEE; background:#FFF; overflow:scroll; overflow-x:hidden; }
+.license{}
+	.license h1{ padding-bottom:10px; font-size:14px; text-align:center; }
+	.license h3{ margin:0; color:#666; }
+	.license p{ line-height:150%; margin:10px 0; text-indent:25px; }
+	.license li{ line-height:150%; margin:5px 0; }
+.title{ margin:5px 0 -15px 60px; }
+
+#notice { overflow: hidden; margin: 20px; padding: 5px; height: 300px; border: 1px solid #B5CFD9; text-align: left; }
+</style>
+</head>
+    <body>
+        <div class="container1">
+            <div class="header">
+                <h1>BBSSDK 安装（更新）向导</h1>
+                <span>BBSSDK</span>
+                <div class="setup step1">
+                    <h2>环境检测</h2>
+                    <p>环境以及文件目录权限检查</p>
+                </div>
+            </div>
+            <div class="main">
+                <h2 class="title">环境检查</h2>
+                <table class="tb" style="margin:20px 0 20px 55px;">
+                    <tbody>
+                        <tr>
+                            <th>项目</th>
+                            <th class="padleft">BBSSDK 所需配置</th>
+                            <th class="padleft" style="width:100px;">当前服务器</th>
+                            <th class="padleft">备注</th>
+                        </tr>
+                        <tr>
+                            <td>Discuz! 版本</td>
+                            <td class="padleft">X3  X3.1  X3.2  X3.3 X3.4</td>
+                            <td class="<?php echo !$is_allow_dz_v?'n':''?>w pdleft16"><?php echo $final['discuzversion']?></td>
+                            <td class="padleft"></td>
+                        </tr>
+                        <tr>
+                            <td>PHP 版本</td>
+                            <td class="padleft">5.3及以上</td>
+                            <td class="<?php echo !$is_allow_php_v?'n':''?>w pdleft16"><?php echo $final['phpversion']?></td>
+                            <td class="padleft"></td>
+                        </tr>
+                        <tr>
+                            <td>MySql 版本</td>
+                            <td class="padleft">5.0及以上</td>
+                            <td class="<?php echo !$is_allow_mysql_v?'n':''?>w pdleft16"><?php echo $final['mysqlversion']?></td>
+                            <td class="padleft"></td>
+                        </tr>
+                        <tr>
+                            <td>数据库权限</td>
+                            <td class="padleft">SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, INDEX</td>
+                            <td class="<?php echo $nop?'n':''?>w pdleft16"><?php echo $nop?'当前无'.$nop.'权限':'满足权限要求'?></td>
+                            <td class="padleft"><?php echo $nop?'如权限不足，建议安装插件时用数据库管理员账号（如，root）进行连接安装':''?></td>
+                        </tr>
+						<tr>
+                            <td>服务器时间</td>
+                            <td class="padleft">北京时间</td>
+                            <td class="<?php echo $timediff?'n':''?>w pdleft16"><?php echo date('Y-m-d H:i:s')?></td>
+                            <td class="padleft"><?php echo $timediff?'与北京时间相差'.$timediff.'秒，请确保服务器时间与北京时间一致':''?></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <form method="post">
+                    
+                    <div class="btnbox marginbot">
+                        <a class="btn" href="<?php echo $_SERVER['PHP_SELF']?>?action=plugins">取消</a>                   
+                        <?php if($is_allow_dz_v&&$is_allow_php_v&&$is_allow_mysql_v&&!$nop):?>
+                            <input type="hidden" name="bbssdk_check" value="checked">
+                            <input type="submit" class="btn" value="下一步">
+                        <?php else:?>
+                            <input type="submit" class="btn" value="请将以上红叉部分修正再试">
+                            <a href='http://wiki.mob.com/bbssdk-for-discuz-1-5%E7%89%88%E6%8F%92%E4%BB%B6%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/' target="_blank" style="color:red">安装说明</a>
+                        <?php endif;?>
+                        <a href='http://bbs.mob.com/forum.php?mod=forumdisplay&fid=54' target="_blank" style="color:red">产品论坛</a>
+                    </div>
+                </form>
+                <div class="footer"></div>
+            </div>
+        </div>
+    </body>
+</html>

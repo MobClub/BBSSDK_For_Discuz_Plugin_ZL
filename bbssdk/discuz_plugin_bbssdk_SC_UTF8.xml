@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+	<item id="Title"><![CDATA[Discuz! Plugin]]></item>
+	<item id="Version"><![CDATA[X3,X3.1,X3.2,X3.3,X3.4]]></item>
+	<item id="Time"><![CDATA[2017-12-01 16:35]]></item>
+	<item id="From"><![CDATA[mob.com]]></item>
+	<item id="Data">
+		<item id="plugin">
+			<item id="available"><![CDATA[1]]></item>
+			<item id="adminid"><![CDATA[0]]></item>
+			<item id="name"><![CDATA[BBSSDK]]></item>
+			<item id="identifier"><![CDATA[bbssdk]]></item>
+			<item id="description"><![CDATA[]]></item>
+			<item id="datatables"><![CDATA[]]></item>
+			<item id="directory"><![CDATA[bbssdk/]]></item>
+			<item id="copyright"><![CDATA[mob.com]]></item>
+			<item id="version"><![CDATA[1.1.0]]></item>
+			<item id="__modules">
+				<item id="0">
+					<item id="name"><![CDATA[bbssdksetting]]></item>
+					<item id="param"><![CDATA[]]></item>
+					<item id="menu"><![CDATA[BBSSDK设置]]></item>
+					<item id="url"><![CDATA[]]></item>
+					<item id="type"><![CDATA[3]]></item>
+					<item id="adminid"><![CDATA[0]]></item>
+					<item id="displayorder"><![CDATA[0]]></item>
+					<item id="navtitle"><![CDATA[]]></item>
+					<item id="navicon"><![CDATA[]]></item>
+					<item id="navsubname"><![CDATA[]]></item>
+					<item id="navsuburl"><![CDATA[]]></item>
+				</item>
+				<item id="1">
+					<item id="name"><![CDATA[downloadsetting]]></item>
+					<item id="param"><![CDATA[]]></item>
+					<item id="menu"><![CDATA[APP下载宣传页设置]]></item>
+					<item id="url"><![CDATA[]]></item>
+					<item id="type"><![CDATA[3]]></item>
+					<item id="adminid"><![CDATA[0]]></item>
+					<item id="displayorder"><![CDATA[0]]></item>
+					<item id="navtitle"><![CDATA[]]></item>
+					<item id="navicon"><![CDATA[]]></item>
+					<item id="navsubname"><![CDATA[]]></item>
+					<item id="navsuburl"><![CDATA[]]></item>
+				</item>
+				<item id="2">
+					<item id="name"><![CDATA[bbssdk_ios]]></item>
+					<item id="param"><![CDATA[]]></item>
+					<item id="menu"><![CDATA[<a href="https://fir.im/BBSSDK" target="_blank"><span>iOS下载地址<span></a>]]></item>
+					<item id="url"><![CDATA[]]></item>
+					<item id="type"><![CDATA[3]]></item>
+					<item id="adminid"><![CDATA[0]]></item>
+					<item id="displayorder"><![CDATA[1]]></item>
+					<item id="navtitle"><![CDATA[]]></item>
+					<item id="navicon"><![CDATA[]]></item>
+					<item id="navsubname"><![CDATA[]]></item>
+					<item id="navsuburl"><![CDATA[]]></item>
+				</item>
+				<item id="3">
+					<item id="name"><![CDATA[bbssdk_android]]></item>
+					<item id="param"><![CDATA[]]></item>
+					<item id="menu"><![CDATA[<a href="http://www.mob.com/mobile/#/download/bbssdk" target="_blank" ><span>安卓下载地址</span></a>]]></item>
+					<item id="url"><![CDATA[http://www.mob.com/mobile/#/download/bbssdk]]></item>
+					<item id="type"><![CDATA[3]]></item>
+					<item id="adminid"><![CDATA[0]]></item>
+					<item id="displayorder"><![CDATA[2]]></item>
+					<item id="navtitle"><![CDATA[]]></item>
+					<item id="navicon"><![CDATA[]]></item>
+					<item id="navsubname"><![CDATA[]]></item>
+					<item id="navsuburl"><![CDATA[]]></item>
+				</item>
+				<item id="4">
+					<item id="name"><![CDATA[bbssdk_key]]></item>
+					<item id="param"><![CDATA[]]></item>
+					<item id="menu"><![CDATA[<a href="http://reg.mob.com/" target="_blank"><span>申请key</span></a>]]></item>
+					<item id="url"><![CDATA[]]></item>
+					<item id="type"><![CDATA[3]]></item>
+					<item id="adminid"><![CDATA[0]]></item>
+					<item id="displayorder"><![CDATA[3]]></item>
+					<item id="navtitle"><![CDATA[]]></item>
+					<item id="navicon"><![CDATA[]]></item>
+					<item id="navsubname"><![CDATA[]]></item>
+					<item id="navsuburl"><![CDATA[]]></item>
+				</item>
+				<item id="5">
+					<item id="name"><![CDATA[bbssdk_pf]]></item>
+					<item id="param"><![CDATA[]]></item>
+					<item id="menu"><![CDATA[<a href="http://bbs.mob.com/forum.php?mod=forumdisplay&fid=54" target="_blank"><span>产品论坛</span></a>]]></item>
+					<item id="url"><![CDATA[]]></item>
+					<item id="type"><![CDATA[3]]></item>
+					<item id="adminid"><![CDATA[0]]></item>
+					<item id="displayorder"><![CDATA[4]]></item>
+					<item id="navtitle"><![CDATA[]]></item>
+					<item id="navicon"><![CDATA[]]></item>
+					<item id="navsubname"><![CDATA[]]></item>
+					<item id="navsuburl"><![CDATA[]]></item>
+				</item>
+				<item id="6">
+					<item id="name"><![CDATA[install]]></item>
+					<item id="param"><![CDATA[]]></item>
+					<item id="menu"><![CDATA[<a href="http://wiki.mob.com/bbssdk-for-discuz-1-5%E7%89%88%E6%8F%92%E4%BB%B6%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/" target="_blank" style="color:red">安装说明</a>]]></item>
+					<item id="url"><![CDATA[http://wiki.mob.com/bbssdk-for-discuz-1-5%E7%89%88%E6%8F%92%E4%BB%B6%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/]]></item>
+					<item id="type"><![CDATA[3]]></item>
+					<item id="adminid"><![CDATA[0]]></item>
+					<item id="displayorder"><![CDATA[5]]></item>
+					<item id="navtitle"><![CDATA[]]></item>
+					<item id="navicon"><![CDATA[]]></item>
+					<item id="navsubname"><![CDATA[]]></item>
+					<item id="navsuburl"><![CDATA[]]></item>
+				</item>
+			</item>
+		</item>
+		<item id="version"><![CDATA[X3,X3.1,X3.2,X3.3,X3.4]]></item>
+        <item id="language">	
+			<item id="installlang">
+				<item id="title"><![CDATA[步骤]]></item>
+				<item id="check"><![CDATA[环境准备]]></item>
+				<item id="ifreg"><![CDATA[环境通过并已经安装，请点击确认进行配置]]></item>
+				<item id="phpversion_msg"><![CDATA[请升级PHP 5.3以上版本]]></item>
+				<item id="mysql_msg"><![CDATA[请升级MySQL 5.0以上版本]]></item>
+				<item id="dbuser_msg"><![CDATA[数据库用户没有足够的权限]]></item>
+				<item id="file_msg"><![CDATA[目录下进行读写失败，请拷贝插件下文件夹为files的remote.php文件到对应目录]]></item>
+				<item id="address_key"><![CDATA[BBSSDK插件接口地址]]></item>
+				<item id="address_msg"><![CDATA[此Appkey已绑定其他论坛地址，如下：]]></item>
+				<item id="hd_tip1"><![CDATA[请到Mob管理平台(<a href="http://www.mob.com/developer/login" target="_blank">www.mob.com</a>)注册账号（<a href="http://wiki.mob.com/bbssdk%E6%B3%A8%E5%86%8C%E8%B4%A6%E5%8F%B7%E6%B5%81%E7%A8%8B/" style="color:red;" target="_blank">申请账号教程</a>）。安装教程：<a style="color:red;" href="http://wiki.mob.com/bbssdk-for-discuz-1-5%E7%89%88%E6%8F%92%E4%BB%B6%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/" target="_blank">链接</a>]]></item>
+				<item id="install"><![CDATA[安装]]></item>
+				<item id="reg_header"><![CDATA[填写Mob平台信息]]></item>
+				<item id="succeed"><![CDATA[成功]]></item>
+				<item id="local_ban"><![CDATA[本地环境无法使用BBSSDK插件，请先更改环境，后卸载插件重新安装。]]></item>
+				<item id="must_fill"><![CDATA[(必填)]]></item>
+				<item id="curl_unsupported"><![CDATA[[抱歉,您的安装环境不支持CURL组件,无法使用此插件]]></item>
+				<item id="not_fill"><![CDATA[您填写的资料不完整,请返回补充完整]]></item>
+				<item id="errmsg"><![CDATA[抱歉,您的BBSSDK在mob平台注册过程发生了一些问题,具体错误如下：]]></item>
+				<item id="install_succeed"><![CDATA[配置成功，正在跳转至完成界面.]]></item>
+				<item id="discuzurl_error"><![CDATA[论坛地址错误，请重新输入]]></item>
+			</item>
+		</item>
+		<item id="installfile"><![CDATA[install.php]]></item>
+		<item id="uninstallfile"><![CDATA[uninstall.php]]></item>
+		<item id="upgradefile"><![CDATA[upgrade.php]]></item>
+		<item id="checkfile"><![CDATA[checkenv.php]]></item>
+	</item>
+</root>

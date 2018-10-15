@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <meta charset="gbk">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>详情页</title>
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="format-detection" content="telephone=no">
+		<link rel="stylesheet" type="text/css" href="./source/plugin/bbssdk/h5/forum/assets/css/style.css">
+        <link rel="stylesheet" type="text/css" href="./source/plugin/bbssdk/h5/forum/assets/css/md.css">
+        <script type="text/javascript" src="//f.moblink.mob.com/v2_0_1/moblink.js?appkey=<?php echo $appkey?>"></script>
+	</head>
+	<body>
+    	<div>
+    		<!--文章 start-->
+    		<div class="article">
+    			<div class="article-title"><?php echo $thread['subject']?></div>
+                        <!--作者 start-->
+                        <div class="author">
+                                <div class="author-left">
+                                        <div class="author-portrait"><img src="<?php echo $thread['avatar']?>"/></div>
+                                        <div class="author-info">
+                                            <div><?php echo $thread['author']?></div>
+                                            <div><?php echo formatDate($thread['dateline'])?></div>
+                                        </div>
+                                </div>
+<!--                                <div class="author-right" @click="follow(article.authorId,article.follow)">
+                                        <img v-if="article.follow==false" src="./source/plugin/bbssdk/h5/forum/assets/images/follow-no.png"/>
+                                        <img v-if="article.follow==true" src="./source/plugin/bbssdk/h5/forum/assets/images/follow-yes.png"/>
+                                </div>-->
+                        </div>
+                        <!--作者 end-->
+                        <div class="baseInfo">
+                                <div onclick="location.href = location.href.replace('#postTitle', '')+'#postTitle'">评论<span><?php echo $thread['replies']?></span></div>
+                                <div>喜欢<span><?php echo $thread['recommend_add']?></span></div>
+                                <div>查看<span><?php echo $thread['views']?></span></div>
+                                <div><!--<img src="data/attachment/common/<?php echo $foruminfo['icon']?>">--><?php echo $foruminfo['name']?></div>
+                        </div>
+    			<div class="article-text  markdown-body"><?php echo $thread['message']?></div>
+<!--    			<ul class="flie-list" v-if="article.attachments!=null">
+    				<li v-for="atta in article.attachments">
+    					<div class="file-img"><img src="./source/plugin/bbssdk/h5/forum/assets/images/fileicon-default.png"/></div>
+    					<div class="file-name">{{ atta.fileName }}</div>
+    					<a href="javascript:;" @click="openAttachment(atta)">{{ atta.isImage==1 ? "打开附件" : "下载附件" }}</a>
+    				</li>
+    			</ul>-->
+    		</div>
+    		<!--文章 end-->
+    		
+    		<!--评论 start-->
+                <div class="postTitle" id="postTitle"><img src="./source/plugin/bbssdk/h5/forum/assets/images/postTitle.png"/>评论</div>
+                <?php if($posts):?>
+                <ul class="comment" id="comm">
+                    <?php foreach($posts as $p):?>
+    			<li>
+                            <div class="t">
+                                <div class="m-l-0"><img src="<?php echo $p['avatar']?>"/></div>
+                                <div class="name"><?php echo $p['anonymous']==1?'匿名用户':$p['author']?></div>
+                                <div><?php echo formatDate($p['dateline'])?></div>
+                                <!--<div class="r" @click="reply(list)"><img src="./source/plugin/bbssdk/h5/forum/assets/images/post.png"/></div>-->
+                                <div class="r"><?php echo $p['position']?>楼</div>
+                                <?php if($p['authorid']==$thread['authorid']):?>
+                                <div class="r"><div class="comment-author">楼主</div></div>
+                                <?php endif;?>
+                            </div>
+                            <div class="c"><?php echo  $thread['hiddenreplies']==1?'<p style="padding: 8px 8px 8px 24px;border: 1px dashed #FF9A9A;">此帖仅作者可见</p>':$p['message']?></div>
+                            <?php if($thread['hiddenreplies']!=1&&$p['precomment']):?>
+                            <div class="comment-reply-box">
+                                <dl class="comment-reply">
+                                        <dd>引用：<?php echo $p['precomment']['author']?>于<?php echo formatDate($p['precomment']['dateline'])?>发表的：<?php echo $p['precomment']['message']?></dd>
+                                </dl>
+                            </div>
+                            <?php endif;?>
+    			</li>
+                    <?php endforeach;?>
+    		</ul>
+                <?php else:?>
+                <div class="bottom-loading"><span>暂无评论</span></div>
+                <?php endif;?>
+    		
+    	</div>
+		<script type="text/javascript">
+            var video = document.getElementsByName("video");
+            for(v in video ){
+                video[v].height = video[v].offsetWidth*0.75
+            }
+            MobLink({
+                el: '',
+                path: '/thread/detail',
+                params: {
+                    'fid': '<?php echo $thread["fid"]?>',
+                    'tid': '<?php echo $thread["tid"]?>',
+                }
+            });
+        </script>
+	</body>
+</html>

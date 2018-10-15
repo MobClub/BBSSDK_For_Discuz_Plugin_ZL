@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="gbk">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>签到</title>
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="format-detection" content="telephone=no">
+                <script type="text/javascript" src="./source/plugin/bbssdk/h5/sign/assets/zepto.min.js"></script>
+                <style>
+                    html,body{
+                        margin: 0;
+                        padding: 0;
+                    }
+                    body{
+                        background-color: #F2F3F7;
+                    }
+                    .top{
+                        background-color: #FFAA42;
+                        height: 240px;
+                        padding-top: 20px;
+                    }
+                    .top div{
+                        margin: 0 auto;
+                    }
+                    .top .t img{
+                        display: block;
+                        margin: 0 auto;                        
+                    }
+                    .top .m{
+                        height: 18px;
+                        font-family: PingFangSC-Semibold;
+                        font-size: 18px;
+                        color: #FFFFFF;
+                        letter-spacing: 0;
+                        text-align: center;
+                        line-height: 18px;
+                        margin-top: 20px;
+                    }
+                    .top .b{
+                        width: 104px;
+                        height: 20px;
+                        background-color: beige;
+                        font-family: PingFangSC-Regular;
+                        font-size: 10px;
+                        color: #ACADB8;
+                        letter-spacing: 0;
+                        line-height: 20px;
+                        border-radius: 10px;
+                        text-align: center;
+                        margin-top: 15px;
+                    }
+                    .bottom .title{
+                        background-color: #FFFFFF;
+                        height: 49px;
+                        text-align: left;
+                        line-height: 49px;
+                        border-bottom: 1px solid #EDEFF3;
+                        font-family: PingFangSC-Semibold;
+                        font-size: 14px;
+                        color: #ACADB8;
+                        letter-spacing: 0;
+                        padding-left: 15px;
+                    }
+                    .bottom .list{
+                        padding-left: 15px;
+                        padding-right: 15px;
+                        background-color: #FFFFFF;
+                        height: 65px;
+                        text-align: left;
+                        display:flex;
+                        align-items:center;
+                    }
+                    .bottom .list .avatar img{
+                        width: 40px;
+                        height: 40px;
+                        border-radius: 50%;
+                    }
+                    .bottom .list .name{
+                        font-family: PingFangSC-Regular;
+                        font-size: 15px;
+                        color: #4E4F57;
+                        letter-spacing: -0.18px;
+                        text-align: justify;
+                        line-height: 15px;
+                        margin-left: 10px;
+                    }
+                    .bottom .list .time{
+                        flex-grow: 1;
+                        display: flex;
+                        justify-content: flex-end;
+                        font-family: PingFangSC-Regular;
+                        font-size: 10px;
+                        color: #ACADB8;
+                        letter-spacing: 0;
+                        line-height: 10px;
+                    }
+                    .bottom #more{
+                        background-color: #FFFFFF;
+                        height: 30px;
+                        line-height: 30px;
+                        text-align: center;
+                        color: #4E4F57;
+                        font-size: 12px;
+                        display: none;
+                    }
+                </style>
+                <script>
+                    var loadingOk=true
+                    var noMore = false
+                    var page = 1
+                    window.onscroll  = function (){
+                        var marginBot = 0;
+                        if (document.compatMode === "CSS1Compat"){
+                            marginBot = document.documentElement.scrollHeight - (document.documentElement.scrollTop+document.body.scrollTop)-  document.documentElement.clientHeight;
+                        } else {
+                            marginBot = document.body.scrollHeight - document.body.scrollTop-  document.body.clientHeight;
+                        }
+                        if(marginBot<=0 && loadingOk==true) {
+                            setTimeout(function(){
+                            getList()
+                            },1000)
+                        }
+                    }
+                    function getList(){
+                        if(noMore==true){
+                                return
+                        }
+                        loadingOk=false
+                        $('#more').css('display','block')
+                          $.ajax({
+                            type: 'POST',
+                            url: 'plugin.php?id=bbssdk:sign',
+                            data:  { page: page,uid:'<?php echo $p['uid']?>',type:'<?php echo $p['type']?>',nonce:'<?php echo $p['nonce']?>',time:'<?php echo $p['time']?>',sign:'<?php echo $sign?>' },
+                            dataType: 'XML',
+                            timeout: 5000,
+                            success: function(response){
+                                loadingOk = true
+                                $('#more').css('display','none')
+                                page +=1
+                                if(response.length==0){
+                                    noMore = true
+                                }
+                                console.log(response)
+                                $('#content').append(response)
+                            },
+                            error: function(xhr, type){
+                              alert('签到记录获取失败')
+                            }
+                          })
+                    }
+                    function qiandao(){
+                        if(clicked){
+                            return
+                        }
+                        clicked = true
+                        $.ajax({
+                            type: 'POST',
+                            url: 'plugin.php?id=bbssdk:sign',
+                            data: { qiandao: 1,uid:'<?php echo $p['uid']?>',type:'<?php echo $p['type']?>',nonce:'<?php echo $p['nonce']?>',time:'<?php echo $p['time']?>',sign:'<?php echo $sign?>' },
+                            dataType: 'XML',
+                            timeout: 5000,
+                            success: function(response){
+                                clicked = false
+                                var parser=new DOMParser();  
+                                var xmlDoc=parser.parseFromString(response,"text/xml");  
+                                //提取数据  
+                                var msg = xmlDoc.getElementsByTagName('root')[0].textContent; 
+                                if(/已签到/.test(msg)){
+                                    location.href = location.href
+                                }else{
+                                    alert(msg)
+                                }
+                            },
+                            error: function(xhr, type){
+                              alert('请求失败')
+                            }
+                          })
+                    }
+                    //init
+                    window.onload = function (){
+                        getList()
+                    }
+                    var installed = '<?php echo $installed?>'
+                    if(!installed){
+                        alert('本功能需要安装小米签到插件！')
+                    }
+                </script>
+	</head>
+	<body>
+            <div class="top">
+                <?php if($qiandaodb['time'] > $tdtime):?>
+                <div class="t"><img src="./source/plugin/bbssdk/h5/sign/assets/ys.png"/></div>
+                <div class="m">今日已签到，排名第<?php echo isset($qiandaodb['row'])?$qiandaodb['row']:0?>位</div>
+                <?php else:?>
+                <div class="t"><img onclick="qiandao()" src="./source/plugin/bbssdk/h5/sign/assets/s.png"/></div>
+                <div class="m">今日尚未签到</div>
+                <?php endif;?>
+                
+                <div class="b">累计签到<?php echo isset($qiandaodb['days'])?$qiandaodb['days']:0?>天</div>
+            </div>
+            <div class="bottom">
+                <div class="title">今日已有<?php echo isset($stats['todayq'])?$stats['todayq']:0?>人签到</div>
+                <div id="content">
+<!--                    <div class="list">
+                        <a href="http://www.baidu.com" class="avatar">
+                            <img src="https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=1132913280,1422945202&fm=173&app=12&f=JPEG?w=218&h=146&s=E8D083444C02105516A86BBB0300E014"/>
+                        </a>
+                        <div class="name">黄家湖</div>
+                        <div class="time">10：00 签到</div>
+                    </div>-->
+                </div>
+                <div id="more">加载中...</div>
+            </div>
+	</body>
+</html>
