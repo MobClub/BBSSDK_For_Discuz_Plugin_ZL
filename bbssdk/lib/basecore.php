@@ -268,6 +268,49 @@ class BaseCore
 			$this->params[$name] = $value;
 		}
 	}
+        public function showmessage(){
+		$p = func_get_args();
+		isset($p[0]) && $message = $p[0];
+		isset($p[1]) && $url_forward = $p[1];
+		isset($p[2]) && $values = $p[2];
+		isset($p[3]) && $extraparam = $p[3];
+		isset($p[4]) && $custom = $p[4];
+		global $_G, $show_message;
+
+		$navtitle = lang('core', 'title_board_message');
+
+		if($custom) {
+			$alerttype = 'alert_info';
+			$show_message = $message;
+                        $bc = new BaseCore();
+                        $bc->return_status(405,$show_message);
+		}
+
+		$vars = explode(':', $message);
+		if(count($vars) == 2) {
+			$show_message = lang('plugin/'.$vars[0], $vars[1], $values);
+		} else {
+			$show_message = lang('message', $message, $values);
+		}
+
+		if($_G['connectguest']) {
+			$param['login'] = false;
+			$param['alert'] = 'info';
+			if (defined('IN_MOBILE')) {
+				if ($message == 'postperm_login_nopermission_mobile') {
+					$show_message = lang('plugin/qqconnect', 'connect_register_mobile_bind_error');
+				}
+				$show_message = str_replace(lang('forum/misc', 'connectguest_message_mobile_search'), lang('forum/misc', 'connectguest_message_mobile_replace'), $show_message);
+			} else {
+				$show_message = str_replace(lang('forum/misc', 'connectguest_message_search'), lang('forum/misc', 'connectguest_message_replace'), $show_message);
+			}
+			if ($message == 'group_nopermission') {
+				$show_message = lang('plugin/qqconnect', 'connectguest_message_complete_or_bind');
+			}
+		}
+                $bc = new BaseCore();
+		$bc->return_status(405,$show_message);
+	}
 }
 
 class model_forum_newpost extends model_forum_post

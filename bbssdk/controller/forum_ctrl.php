@@ -156,6 +156,29 @@ class Forum extends BaseCore
 		return $data;
 	}
         public function post_search(){
+            require_once libfile('function/search');
+            global $_G;
+            $type = trim($this->type);
+            $type = $type?$type:'thread';
+            
+            $srchtxt = $this->wd;
+            $keyword = isset($srchtxt) ? dhtmlspecialchars(trim($srchtxt)) : '';
+            
+            $page = $this->pageIndex;
+            $_GET['page'] = $page<1?1:$page;
+            
+            //if($type=='thread'){
+                $_GET['orderby'] = 'lastpost';
+                $_GET['ascdesc'] = 'desc';
+                if(trim($srchtxt)){
+                    require_once 'lib/search_form.php';
+                }
+                $data['list'] = array();
+                $this->success_result($data);
+            //}
+            
+        }
+        public function post_searchold(){
             $type = trim($this->type);
             $type = $type?$type:'thread';
             $keyword = trim($this->wd);
